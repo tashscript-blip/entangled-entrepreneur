@@ -65,3 +65,44 @@ if (statusEl) {
         }, 500);
     }, 4000);
 }
+
+// Uplink Form Handler
+const uplinkForm = document.getElementById('uplinkForm');
+const formStatus = document.getElementById('formStatus');
+
+if (uplinkForm) {
+    uplinkForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = uplinkForm.querySelector('input[type="email"]').value;
+        const btn = uplinkForm.querySelector('button[type="submit"]');
+
+        // Visual feedback during transmission
+        btn.innerHTML = 'TRANSMITTING...';
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+
+        // Post data to formsubmit.co via fetch
+        fetch(uplinkForm.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Hide the input fields and show success message
+                uplinkForm.querySelector('.form-row').style.display = 'none';
+                formStatus.innerHTML = '<span class="success-msg">TRANSMISSION SUCCESSFUL. FREQUENCY SYNCED.</span>';
+            })
+            .catch(error => {
+                // Revert on error
+                btn.innerHTML = 'Initialize Link <span class="arr">→</span>';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                formStatus.innerHTML = '<span class="error-msg">UPLINK FAILED. INTERFERENCE DETECTED.</span>';
+            });
+    });
+}

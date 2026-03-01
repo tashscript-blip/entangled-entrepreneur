@@ -249,7 +249,9 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    margin-bottom: 3rem;
+    .subtitle {
+        margin-bottom: 2rem;
+    }
 }
 
 /* Buttons */
@@ -503,6 +505,113 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Uplink Section */
+#uplink {
+    padding: 10rem 5%;
+    position: relative;
+}
+
+.uplink-box {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-primary);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem;
+    box-shadow: 0 0 40px rgba(0, 255, 178, 0.05), inset 0 0 20px rgba(0, 255, 178, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.uplink-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.uplink-box h2 {
+    margin-bottom: 1.5rem;
+}
+
+.uplink-box p {
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+.uplink-form {
+    position: relative;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.quantum-input {
+    flex: 1;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.quantum-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(0, 255, 178, 0.1);
+}
+
+.quantum-input::placeholder {
+    color: var(--text-dim);
+    opacity: 0.5;
+}
+
+.btn-uplink {
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 0 2.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-uplink:hover {
+    background: var(--accent-primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px rgba(0, 255, 178, 0.4);
+}
+
+.form-status {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.success-msg {
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 178, 0.3);
+}
+
+.error-msg {
+    color: #FF00E5;
+    text-shadow: 0 0 10px rgba(255, 0, 229, 0.3);
+}
+
 /* Footer */
 footer {
     padding: 5rem 5%;
@@ -527,6 +636,19 @@ footer {
     .node-grid,
     .author-grid {
         grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .btn-uplink {
+        padding: 1.25rem;
+        justify-content: center;
+    }
+
+    .uplink-box {
+        padding: 3rem 2rem;
     }
 
     h1 {
